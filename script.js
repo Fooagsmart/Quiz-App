@@ -8,6 +8,7 @@ const questions = [
         {text: "Giraffe", correct: false},
      ]   
     },
+
     {
         question: "Which of this is not protein",
         answers:[
@@ -17,6 +18,7 @@ const questions = [
            {text: "beans", correct: false},
         ]   
        },
+
        {
         question: "Which is the largest desert in the world",
         answers:[
@@ -26,6 +28,7 @@ const questions = [
            {text: "Antarctica", correct: true},
         ]   
        },
+       
        {
         question: "Which is the smallest continent in the world",
         answers:[
@@ -48,7 +51,7 @@ let score = 0;
 function startQuiz(){
     currentQuestionIndex = 0;
     score = 0;
-    nextButton.innerHTML = "Next";
+     nextButton.innerHTML = "Next";
     showQuestion();
 }
 
@@ -58,10 +61,21 @@ function showQuestion(){
     let questionNo = currentQuestionIndex + 1;
     questionElement.innerHTML = questionNo + ". " + currentQuestion.question;
 
-    currentQuestion.amswers.forEach(answer => {
+    currentQuestion.answers.forEach(answer => {
         const button = document.createElement("button");
         button.innerHTML = answer.text;
-        button.classList.add('btn');
+        button.classList.add("btn");
         answerButton.appendChild(button);
     });
 }
+
+function resetState(){
+    nextButton.style.display = "none";
+    while(answerButton.firstChild){
+        answerButton.removeChild(answerButton.firstChild);
+    }
+}
+
+
+
+startQuiz();
